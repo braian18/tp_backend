@@ -3,7 +3,8 @@
 -- 1. Crear la base de datos
 CREATE DATABASE IF NOT EXISTS tp_backend;
 USE tp_backend;
-
+ 
+ 
 -- 2. Crear la tabla de usuarios
 CREATE TABLE usuarios (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
