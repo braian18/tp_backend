@@ -1,6 +1,7 @@
 -- Estructura de la base de datos
-
+ 
 -- 1. Crear la base de datos
+
 CREATE DATABASE IF NOT EXISTS tp_backend;
 USE tp_backend;
 
