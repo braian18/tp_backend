@@ -10,9 +10,8 @@ CREATE TABLE usuarios (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    rol ENUM ('admin', 'profesor', 'alumno','inactivo') NOT NULL DEFAULT 'inactivo',
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+    rol ENUM ('admin', 'profesor', 'alumno','inactivo') NOT NULL DEFAULT 'inactivo'
+)
 -- 3. Crear la tabla de materia
 CREATE TABLE materia (
     id_materia INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -29,14 +28,17 @@ CREATE TABLE matricula(
     FOREIGN KEY (id_materia) REFERENCES materia(id_materia)
 );
 
-CREATE TABLE tarea(
-    id_tarea INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE tarea (
+    id_tarea INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     fecha_entrega TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREING KEY (id_alumno) REFERENCES usuarios(id),
-    FOREIGN KEY (id_materia) REFERENCES materia(id_materia)
-);
+    id_alumno INT(11) NOT NULL, 
+    id_materia INT(11) NOT NULL,
+    FOREIGN KEY (id_alumno) REFERENCES usuarios(id), //se debe de decifinir la columna antes de definirla como FK
+    FOREIGN KEY (id_materia) REFERENCES materia(id_materia) //se debe de decifinir la columna antes de definirla como FK
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- Estructura de directorios recomendada para el proyecto
 /*
