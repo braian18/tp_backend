@@ -7,12 +7,13 @@ import { materiaController } from './controllers/materia.Controller.js';
 
 
 const app = express();
-
+app.use(express.json());
 app.set('port', envs.PORT);
 
 app.get('/users', usersController.getUsers)
 app.get('/tarea', tareaController.getTarea)
 app.get('/matricula', matriculaController.getMatricula)
 app.get('/materia', materiaController.getMateria)
+app.post('/crearmateria', materiaController.crearMateria)
 
 export default app;

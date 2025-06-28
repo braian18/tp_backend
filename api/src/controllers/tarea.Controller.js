@@ -7,7 +7,7 @@ try{
     //creacion de la la conexion
     const connection = await getConnection();
 
-    const [tarea, fields] = await connection.query('SELECT * FROM tarea')
+    const [tarea] = await connection.query('SELECT * FROM tarea')
 
     res.status(200).json({ ok: true, result: tarea, msg: 'Approved'});
 
