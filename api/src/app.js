@@ -7,7 +7,7 @@ import { materiaController } from './controllers/materia.Controller.js';
 
 
 const app = express();
-
+app.use(express.json());
 app.set('port', envs.PORT);
 
 app.get('/users', usersController.getUsers)
