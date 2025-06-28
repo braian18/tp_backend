@@ -14,6 +14,11 @@ app.get('/users', usersController.getUsers)
 app.get('/tarea', tareaController.getTarea)
 app.get('/matricula', matriculaController.getMatricula)
 app.get('/materia', materiaController.getMateria)
+<<<<<<< HEAD
 app.post('/crearmateria', materiaController.crearMateria)
+=======
+app.get('/users', usersController.getProfesores)
+app.get('/users', usersController.getAlumnos)
+>>>>>>> f5dfccef0c42fbbae956dfc502c63f4aa2db61ef
 
 export default app;
