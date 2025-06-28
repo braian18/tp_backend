@@ -9,7 +9,7 @@ try{
 
     const [users, fields] = await connection.query('SELECT * FROM usuarios')
 
-    res.status(200).json({ ok: true, result: users, msg: 'Approved'});
+    res.status(200).json({ ok: true, result: users, msg: 'Aproveed'});
 
 } catch(err){
     res.status(400).json({ok: false, err, msg: 'Some error'})
