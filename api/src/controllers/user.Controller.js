@@ -1,6 +1,9 @@
 import { getConnection } from "../database/database.js";
 import { request, response } from "express";
 
+
+
+//funciones admin
 const getUsers = async (req=request, res=response) => {
 try{
 
@@ -16,6 +19,9 @@ try{
 }
 };
 
+
+
+//funciones profesor
 const getProfesores = async (req=request, res=response) => {
     try{
         const connection = await getConnection();
@@ -27,6 +33,10 @@ const getProfesores = async (req=request, res=response) => {
     }
 };
 
+
+
+
+///Funciones alumnos
 const getAlumnos = async (req=request, res=response) => {
     try {
         const connection = await getConnection();
