@@ -14,7 +14,7 @@ app.get('/users', usersController.getUsers)
 app.get('/tarea', tareaController.getTarea)
 app.get('/matricula', matriculaController.getMatricula)
 app.get('/materia', materiaController.getMateria)
-app.get('/users', usersController.getProfesores)
-app.get('/users', usersController.getAlumnos)
+app.get('/profesores', usersController.getProfesores)
+app.get('/alumnos', usersController.getAlumnos)
 
 export default app;
