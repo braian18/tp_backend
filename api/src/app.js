@@ -11,11 +11,13 @@ app.use(express.json());
 app.set('port', envs.PORT);
 
 app.get('/users', usersController.getUsers)
+app.post('/users', usersController.createUsuario)
+app.put('/users/:id', usersController.updateUsuario)
+app.delete('/users/:id', usersController.deleteUsuario)
 app.get('/profesores', usersController.getProfesores)
 app.get('/profesores/:id',usersController.getProfesorById)
-app.post('/profesores', usersController.createProfesor)
-app.put('/profesores/:id', usersController.updateProfesor)
-app.delete('/profesores/:id', usersController.deleteProfesor)
+app.get('/alumnos', usersController.getAlumnos)
+app.get('/alumnos/:id',usersController.getAlumnoById)
 app.get('/tarea', tareaController.getTarea)
 app.get('/matricula', matriculaController.getMatricula)
 //rutas de CRUD materia
@@ -23,8 +25,6 @@ app.get('/materia', materiaController.getMateria)
 app.post('/materia', materiaController.crearMateria);
 app.put('/materia/:id', materiaController.actualizarMateria);
 app.delete('/materia/:id', materiaController.eliminarMateria);
-app.get('/profesores', usersController.getProfesores)
-app.get('/alumnos', usersController.getAlumnos)
 app.post('/materia', materiaController.crearMateria);
 app.put('/materia/:id', materiaController.actualizarMateria);
 app.delete('/materia/:id', materiaController.eliminarMateria);
