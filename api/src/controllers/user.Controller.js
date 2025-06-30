@@ -21,6 +21,12 @@ try{
 const createUsuario = async (req=request, res=response) => {
     try {
         const connection = await getConnection();
+
+        const { rolVal } = req.body;
+
+        if (rolVal !== "profesor" && rolVal !== "admin") {
+            return res.status(403).json({ ok: false, msg: 'Acceso Denegado' });
+        }
         
         const { nombre, email, rol } = req.body;
 
@@ -38,7 +44,7 @@ const createUsuario = async (req=request, res=response) => {
          });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Error al crear profesor' });
+        res.status(500).json({ err: 'Error al crear profesor' });
     }
 };
 
