@@ -41,6 +41,7 @@ const crearTarea = async (req = request, res = response) => {
     const query = "INSERT INTO tarea (titulo, descripcion, id_alumno, id_materia) VALUES (?, ?, ?, ?)";
     const [result] = await connection.query(query, [titulo, descripcion, id_alumno, id_materia]);
 
+<<<<<<< HEAD
     res.status(201).json({
       ok: true,
       id_tarea: result.insertId,
@@ -53,6 +54,11 @@ const crearTarea = async (req = request, res = response) => {
   } catch (err) {
     res.status(500).json({ ok: false, err, msg: "Error al crear tarea" });
   }
+=======
+    } catch(err){
+    res.status(400).json({ok: false, err, msg: 'Some error'})
+    }
+>>>>>>> c35010e547b931e9ce77eaf7e6ad545b1f16cecb
 };
 
 // Actualizar tarea
