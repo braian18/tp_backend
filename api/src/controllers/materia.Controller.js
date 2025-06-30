@@ -5,7 +5,7 @@ const getMateria = async (req = request, res = response) => {
   try {
     const connection = await getConnection();
     const [materia] = await connection.query("SELECT * FROM materia");
-    res.status(200).json({ ok: true, result: materia, msg: "Approved" });
+    res.status(200).json({ ok: true, result: materia, msg: "Aprobado" });
   } catch (err) {
     res.status(400).json({ ok: false, err, msg: "Algun error" });
   }
@@ -22,7 +22,7 @@ const getMateriaById = async (req = request, res = response) => {
     if (materia.length === 0) {
       res.status(404).json({ ok: false, msg: "Materia no encontrada" });
     } else {
-      res.status(200).json({ ok: true, result: materia[0], msg: "Approved" });
+      res.status(200).json({ ok: true, result: materia[0], msg: "Aprobado" });
     }
   } catch (err) {
     res.status(400).json({ ok: false, err, msg: "Algun error" });
@@ -79,29 +79,12 @@ const actualizarMateria = async (req = request, res = response) => {
   }
 };
 
-const eliminarMateria = async (req = request, res = response) => {
-  try {
-    const { id } = req.params;
-    const connection = await getConnection();
 
-    const [result] = await connection.query("DELETE FROM materia WHERE id_materia = ?", [
-      id,
-    ]);
-    if (result.affectedRows === 0) {
-      res.status(404).json({ ok: false, msg: "Materia no encontrada" });
-    } else {
-      res.status(200).json({ ok: true, msg: "Eliminada" });
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ ok: false, msg: "Algun error" });
-  }
-};
 
 export const materiaController = {
   getMateria,
   getMateriaById,
   crearMateria,
   actualizarMateria,
-  eliminarMateria,
+
 };
