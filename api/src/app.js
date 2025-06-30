@@ -18,6 +18,8 @@ app.get('/profesores', usersController.getProfesores)
 app.get('/profesores/:id',usersController.getProfesorById)
 app.get('/alumnos', usersController.getAlumnos)
 app.get('/alumnos/:id',usersController.getAlumnoById)
+
+
 app.get('/tarea', tareaController.getTarea)
 app.get('/tarea/:id', tareaController.getTareaById);
 app.post('/tarea', tareaController.crearTarea);
@@ -29,9 +31,6 @@ app.get('/matricula', matriculaController.getMatricula)
 app.get('/materia', materiaController.getMateria)
 app.post('/materia', materiaController.crearMateria);
 app.put('/materia/:id', materiaController.actualizarMateria);
-app.delete('/materia/:id', materiaController.eliminarMateria);
 app.post('/materia', materiaController.crearMateria);
 app.put('/materia/:id', materiaController.actualizarMateria);
-app.delete('/materia/:id', materiaController.eliminarMateria);
-
 export default app;
