@@ -11,9 +11,9 @@ try{
 
     res.status(200).json({ ok: true, result: tarea, msg: 'Approved'});
 
-} catch(err){
+    } catch(err){
     res.status(400).json({ok: false, err, msg: 'Some error'})
-}
+    }
 };
 
 export const tareaController = {getTarea};

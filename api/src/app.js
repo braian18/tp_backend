@@ -11,10 +11,14 @@ app.use(express.json());
 app.set('port', envs.PORT);
 
 app.get('/users', usersController.getUsers)
+app.get('/profesores', usersController.getProfesores)
+app.get('/profesores/:id',usersController.getProfesorById)
+app.post('/profesores', usersController.createProfesor)
+app.put('/profesores/:id', usersController.updateProfesor)
+app.delete('/profesores/:id', usersController.deleteProfesor)
 app.get('/tarea', tareaController.getTarea)
 app.get('/matricula', matriculaController.getMatricula)
 app.get('/materia', materiaController.getMateria)
-app.get('/profesores', usersController.getProfesores)
 app.get('/alumnos', usersController.getAlumnos)
 
 export default app;
