@@ -44,7 +44,7 @@ const createUsuario = async (req=request, res=response) => {
          });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ err: 'Error al crear profesor' });
+        res.status(500).json({ err: 'Error al crear Usuario' });
     }
 };
 
@@ -52,6 +52,13 @@ const createUsuario = async (req=request, res=response) => {
 const updateUsuario = async (req= request, res=response)=>{
     try {
         const connection = await getConnection();
+        
+         const { rolVal } = req.body;
+
+        if (rolVal !== "profesor" && rolVal !== "admin") {
+            return res.status(403).json({ ok: false, msg: 'Acceso Denegado' });
+        }
+
         const { id } = req.params;
         const { nombre, email, rol } = req.body;
         if (!nombre || !email || !rol) {
@@ -60,24 +67,30 @@ const updateUsuario = async (req= request, res=response)=>{
         const query = "UPDATE usuarios SET nombre = ?, email = ?, rol = ? WHERE id = ?";
         const params = [nombre, email, rol, id];
         const [result] = await connection.query(query, params);
-        res.status(200).json({ok:true, msg: 'Profesor actualizado'});
+        res.status(200).json({ok:true, msg: 'Usuario actualizado'});
         } catch (err) {
             console.error(err);
-            res.status(500).json({ok:false, err, msg: 'Error al actualizar el profesor'});
+            res.status(500).json({ok:false, err, msg: 'Error al actualizar el Usuario'});
         }
 }
 
 const deleteUsuario = async (req = request, res = response) =>{
     try {
         const connection = await getConnection();
+         const { rolVal } = req.body;
+
+        if (rolVal !== "profesor" && rolVal !== "admin") {
+            return res.status(403).json({ ok: false, msg: 'Acceso Denegado' });
+        }
+
         const { id } = req.params;
         const query = "DELETE FROM usuarios WHERE id = ?";
         const params = [id];
         const [result] = await connection.query(query, params);
-        res.status(200).json({ok:true, msg: 'Profesor eliminado'});
+        res.status(200).json({ok:true, msg: 'Usuario eliminado'});
         } catch (err) {
             console.error(err);
-            res.status(500).json({ok:false, err, msg: 'Error al eliminar el'});
+            res.status(500).json({ok:false, err, msg: 'Error al eliminar el Usuario'});
     }
 
 }
